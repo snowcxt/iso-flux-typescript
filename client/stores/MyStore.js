@@ -1,27 +1,30 @@
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var addons = require('fluxible/addons');
-module.exports = addons.createStore({
-    storeName: 'MyStore',
-    initialize: function () {
-        this.time = new Date();
-    },
-    handleChange: function (payload) {
-        this.name = payload;
-        this.time = new Date();
-        this.emitChange();
-    },
-    handlers: {
-        'MY_ACTION': 'handleChange'
-    },
-    getState: function () {
-        return this.time.toString() + this.name;
-    },
-    dehydrate: function () {
-        return {
-            time: this.time.toString()
-        };
-    },
-    rehydrate: function (state) {
-        this.time = new Date(state.time);
+var MyStore = (function (_super) {
+    __extends(MyStore, _super);
+    function MyStore() {
+        _super.apply(this, arguments);
     }
-});
+    MyStore.prototype.initialize = function () {
+        this.time = new Date().toString();
+    };
+    MyStore.prototype.handleChange = function (payload) {
+        this.name = payload;
+        this.time = new Date().toString();
+        this.emitChange();
+    };
+    MyStore.prototype.getState = function () {
+        return this.time + this.name;
+    };
+    MyStore.storeName = "MyStore";
+    MyStore.handlers = {
+        'MY_ACTION': 'handleChange'
+    };
+    return MyStore;
+})(addons.BaseStore);
+module.exports = MyStore;
 //# sourceMappingURL=MyStore.js.map
