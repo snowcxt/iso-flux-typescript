@@ -44,8 +44,7 @@ module.exports = function (grunt) {
                         { test: /\.(js|jsx)$/, exclude: /node_modules/, loader: require.resolve('babel-loader') },
                         {
                             test: /\.ts$/,
-                            loader: require.resolve('ts-loader')
-                        }
+                            loader: 'awesome-typescript-loader' }
                     ]
                 },
                 plugins: [

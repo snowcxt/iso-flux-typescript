@@ -3,21 +3,28 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-/// <reference path="../../node_modules/typed-react/typed-react.d.ts"/>
 var React = require("react");
-var TypedReact = require("typed-react");
+var myAction = require("../actions/myAction");
+var fluxible_addons_react_1 = require('fluxible-addons-react');
+var MyStore = require("../stores/MyStore");
 var Home = (function (_super) {
     __extends(Home, _super);
     function Home() {
         _super.apply(this, arguments);
     }
     Home.prototype.click = function () {
-        alert("dkfjdkf");
+        this.context.executeAction(myAction, "hkd");
     };
     Home.prototype.render = function () {
-        return (React.createElement("p", { onClick: this.click }, "adfdadfadfadfadfadad"));
+        return (React.createElement("p", {"onClick": this.click.bind(this)}, this.props.time));
+    };
+    Home.contextTypes = {
+        getStore: React.PropTypes.func.isRequired,
+        executeAction: React.PropTypes.func.isRequired
     };
     return Home;
-})(TypedReact.Component);
-module.exports = TypedReact.createClass(Home);
+})(React.Component);
+module.exports = fluxible_addons_react_1.connectToStores(Home, [MyStore], function (context) {
+    return { time: context.getStore(MyStore).getState() };
+});
 //# sourceMappingURL=Home.js.map

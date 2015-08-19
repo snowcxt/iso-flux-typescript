@@ -19,7 +19,6 @@ class Timestamp extends React.Component {
         super(props, context);
     }
     onReset() {
-        alert("kdfjdk")
         this.context.executeAction(updateTime);
     }
     render() {
