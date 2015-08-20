@@ -1,6 +1,5 @@
 import addons = require('fluxible/addons');
 
-
 class MyStore extends addons.BaseStore {
     public time: string;
     public name: string;
@@ -8,18 +7,18 @@ class MyStore extends addons.BaseStore {
         this.time = new Date().toString();
     }
 
-    handleChange(payload) {
+    handleChange(payload: string) {
         this.name = payload;
         this.time = new Date().toString();
         this.emitChange();
     }
     static storeName = "MyStore";
     static handlers = {
-        'MY_ACTION': 'handleChange'
+        'MY_ACTION': "handleChange"
     }
     getState() {
-        return this.time + this.name;
+        return "Hello: " + this.name + "@" + this.time;
     }
 }
 
-export = MyStore;
+export = MyStore

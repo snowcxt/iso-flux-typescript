@@ -4,27 +4,37 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var React = require("react");
+var TypedReact = require("typed-react");
 var myAction = require("../actions/myAction");
-var fluxible_addons_react_1 = require('fluxible-addons-react');
 var MyStore = require("../stores/MyStore");
-var Home = (function (_super) {
-    __extends(Home, _super);
-    function Home() {
+var fluxible_addons_react_1 = require('fluxible-addons-react');
+var H = (function (_super) {
+    __extends(H, _super);
+    function H() {
         _super.apply(this, arguments);
     }
-    Home.prototype.click = function () {
-        this.context.executeAction(myAction, "hkd");
+    H.prototype.getInitialState = function () {
+        return {
+            name: ""
+        };
     };
-    Home.prototype.render = function () {
-        return (React.createElement("p", {"onClick": this.click.bind(this)}, this.props.time));
+    H.prototype.click = function () {
+        this.context.executeAction(myAction, this.state.name);
     };
-    Home.contextTypes = {
-        getStore: React.PropTypes.func.isRequired,
-        executeAction: React.PropTypes.func.isRequired
+    H.prototype.nameChanged = function (e) {
+        this.setState({ name: e.target.value });
     };
-    return Home;
-})(React.Component);
-module.exports = fluxible_addons_react_1.connectToStores(Home, [MyStore], function (context) {
-    return { time: context.getStore(MyStore).getState() };
+    H.prototype.render = function () {
+        return (React.createElement("div", null, React.createElement("p", null, "Hello: ", this.props.hello), React.createElement("input", {"value": this.state.name, "onChange": this.nameChanged}), React.createElement("button", {"onClick": this.click}, "say hello")));
+    };
+    return H;
+})(TypedReact.Component);
+var h = TypedReact.createClass(H);
+h.contextTypes = {
+    getStore: React.PropTypes.func.isRequired,
+    executeAction: React.PropTypes.func.isRequired
+};
+module.exports = fluxible_addons_react_1.connectToStores(h, [MyStore], function (context) {
+    return { hello: context.getStore(MyStore).getState() };
 });
 //# sourceMappingURL=Home.js.map

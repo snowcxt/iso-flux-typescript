@@ -18,11 +18,11 @@ var MyStore = (function (_super) {
         this.emitChange();
     };
     MyStore.prototype.getState = function () {
-        return this.time + this.name;
+        return "Hello: " + this.name + "@" + this.time;
     };
     MyStore.storeName = "MyStore";
     MyStore.handlers = {
-        'MY_ACTION': 'handleChange'
+        'MY_ACTION': "handleChange"
     };
     return MyStore;
 })(addons.BaseStore);

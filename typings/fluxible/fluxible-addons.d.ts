@@ -1,4 +1,4 @@
-declare module "fluxible/addons" {
+declare module __fluxible_addons {
     export var createStore: Function
 
     export class BaseStore {
@@ -8,4 +8,8 @@ declare module "fluxible/addons" {
         removeChangeListener(callback)
         shouldDehydrate()
     }
+}
+
+declare module "fluxible/addons" {
+    export = __fluxible_addons
 }
