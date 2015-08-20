@@ -12,6 +12,7 @@
     ],
     "files": [
         "./client/actions/myAction.ts",
+        "./client/actions/navigate.ts",
         "./client/components/helper.ts",
         "./client/stores/MyStore.ts",
         "./typings/async/async.d.ts",
@@ -21,6 +22,7 @@
         "./typings/fluxible/fluxible.d.ts",
         "./typings/jquery/jquery.d.ts",
         "./typings/lodash/lodash.d.ts",
+        "./typings/react-router/react-router.d.ts",
         "./typings/react/react-addons.d.ts",
         "./typings/react/react.d.ts",
         "./typings/tsd.d.ts",
