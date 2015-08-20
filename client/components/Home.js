@@ -8,6 +8,7 @@ var TypedReact = require("typed-react");
 var myAction = require("../actions/myAction");
 var MyStore = require("../stores/MyStore");
 var fluxible_addons_react_1 = require('fluxible-addons-react');
+var helper = require("./helper");
 var H = (function (_super) {
     __extends(H, _super);
     function H() {
@@ -29,12 +30,7 @@ var H = (function (_super) {
     };
     return H;
 })(TypedReact.Component);
-var h = TypedReact.createClass(H);
-h.contextTypes = {
-    getStore: React.PropTypes.func.isRequired,
-    executeAction: React.PropTypes.func.isRequired
-};
-module.exports = fluxible_addons_react_1.connectToStores(h, [MyStore], function (context) {
+module.exports = fluxible_addons_react_1.connectToStores(helper.addContext(H), [MyStore], function (context) {
     return { hello: context.getStore(MyStore).getState() };
 });
 //# sourceMappingURL=Home.js.map

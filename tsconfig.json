@@ -12,6 +12,7 @@
     ],
     "files": [
         "./client/actions/myAction.ts",
+        "./client/components/helper.ts",
         "./client/stores/MyStore.ts",
         "./typings/async/async.d.ts",
         "./typings/codemirror/codemirror.d.ts",
