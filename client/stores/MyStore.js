@@ -18,12 +18,27 @@ var MyStore = (function (_super) {
         this.time = new Date().toString();
         this.emitChange();
     };
+    MyStore.prototype.londServerData = function (data) {
+        this.server = data;
+        this.emitChange();
+    };
     MyStore.prototype.getState = function () {
-        return "Hello: " + this.name + "@" + this.time;
+        return "Hello: " + this.name + " @ " + this.time;
+    };
+    MyStore.prototype.getServer = function () {
+        return this.server;
+    };
+    MyStore.prototype.dehydrate = function () {
+        return { server: this.server };
+    };
+    MyStore.prototype.rehydrate = function (state) {
+        console.log("rehydrate", state);
+        this.server = state.server;
     };
     MyStore.storeName = "MyStore";
     MyStore.handlers = {
-        'MY_ACTION': "handleChange"
+        'MY_ACTION': "handleChange",
+        'LOAD_HOME': 'londServerData',
     };
     return MyStore;
 })(addons.BaseStore);

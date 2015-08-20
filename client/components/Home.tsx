@@ -9,17 +9,13 @@ import {provideContext} from 'fluxible-addons-react';
 
 import helper = require("./helper");
 
-interface IHome {
-    hello: string;
-}
 
-class H extends TypedReact.Component<IHome, {
+class H extends TypedReact.Component<{
+    server: string;
+    hello: string;
+}, {
     name: string
 }>{
-    // static contextTypes = {
-    //     getStore: React.PropTypes.func.isRequired,
-    //     executeAction: React.PropTypes.func.isRequired
-    // };
     getInitialState() {
         return {
             name: "my name"
@@ -33,6 +29,7 @@ class H extends TypedReact.Component<IHome, {
     }
     render() {
         return (<div>
+            <p>data from server {this.props.server}</p>
             <p>Hello: {this.props.hello}</p>
             <input value={this.state.name} onChange={this.nameChanged }/>
             <button onClick={this.click}>say hello</button>
@@ -42,5 +39,8 @@ class H extends TypedReact.Component<IHome, {
 }
 
 export = connectToStores(helper.addContext(H), [MyStore], (context) => {
-    return { hello: context.getStore(MyStore).getState() }
+    return {
+        hello: context.getStore(MyStore).getState(),
+        server: context.getStore(MyStore).getServer()
+     }
 });

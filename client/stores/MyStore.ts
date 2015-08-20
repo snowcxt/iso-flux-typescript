@@ -1,8 +1,15 @@
 import addons = require('fluxible/addons');
 
 class MyStore extends addons.BaseStore {
+    static storeName = "MyStore";
+    static handlers = {
+        'MY_ACTION': "handleChange",
+        'LOAD_HOME': 'londServerData',
+    }
+
     public time: string;
     public name: string;
+    public server: string;
     initialize() {
         this.time = new Date().toString();
         this.name = "body";
@@ -13,12 +20,25 @@ class MyStore extends addons.BaseStore {
         this.time = new Date().toString();
         this.emitChange();
     }
-    static storeName = "MyStore";
-    static handlers = {
-        'MY_ACTION': "handleChange"
+    londServerData(data) {
+
+        this.server = data;
+        this.emitChange();
     }
     getState() {
-        return "Hello: " + this.name + "@" + this.time;
+        return "Hello: " + this.name + " @ " + this.time;
+    }
+    getServer() {
+        return this.server;
+    }
+
+    dehydrate() {
+        return { server: this.server };
+    }
+
+    rehydrate(state) {
+        console.log("rehydrate", state);
+        this.server = state.server;
     }
 }
 
