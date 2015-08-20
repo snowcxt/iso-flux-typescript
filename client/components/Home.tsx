@@ -22,7 +22,7 @@ class H extends TypedReact.Component<IHome, {
     // };
     getInitialState() {
         return {
-            name: ""
+            name: "my name"
         }
     }
     click() {

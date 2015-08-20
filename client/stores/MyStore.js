@@ -11,6 +11,7 @@ var MyStore = (function (_super) {
     }
     MyStore.prototype.initialize = function () {
         this.time = new Date().toString();
+        this.name = "body";
     };
     MyStore.prototype.handleChange = function (payload) {
         this.name = payload;

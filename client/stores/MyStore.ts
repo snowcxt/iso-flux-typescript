@@ -5,6 +5,7 @@ class MyStore extends addons.BaseStore {
     public name: string;
     initialize() {
         this.time = new Date().toString();
+        this.name = "body";
     }
 
     handleChange(payload: string) {

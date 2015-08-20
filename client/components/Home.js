@@ -16,7 +16,7 @@ var H = (function (_super) {
     }
     H.prototype.getInitialState = function () {
         return {
-            name: ""
+            name: "my name"
         };
     };
     H.prototype.click = function () {
