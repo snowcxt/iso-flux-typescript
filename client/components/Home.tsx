@@ -29,6 +29,7 @@ class H extends TypedReact.Component<{
     }
     render() {
         return (<div>
+            <h1>home view</h1>
             <p>data from server {this.props.server}</p>
             <p>Hello: {this.props.hello}</p>
             <input value={this.state.name} onChange={this.nameChanged }/>

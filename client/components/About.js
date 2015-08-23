@@ -6,7 +6,7 @@ import React from 'react';
 
 class About extends React.Component {
     render() {
-        return React.createElement("p", null, "This issdf 123213 s a description of the site.");
+        return <h1>about view</h1>
     }
 }
 

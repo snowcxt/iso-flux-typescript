@@ -26,7 +26,7 @@ var H = (function (_super) {
         this.setState({ name: e.target.value });
     };
     H.prototype.render = function () {
-        return (React.createElement("div", null, React.createElement("p", null, "data from server ", this.props.server), React.createElement("p", null, "Hello: ", this.props.hello), React.createElement("input", {"value": this.state.name, "onChange": this.nameChanged}), React.createElement("button", {"onClick": this.click}, "say hello")));
+        return (React.createElement("div", null, React.createElement("h1", null, "home view"), React.createElement("p", null, "data from server ", this.props.server), React.createElement("p", null, "Hello: ", this.props.hello), React.createElement("input", {"value": this.state.name, "onChange": this.nameChanged}), React.createElement("button", {"onClick": this.click}, "say hello")));
     };
     return H;
 })(TypedReact.Component);
