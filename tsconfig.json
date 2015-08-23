@@ -26,6 +26,6 @@
         "./typings/react/react-addons.d.ts",
         "./typings/react/react.d.ts",
         "./typings/tsd.d.ts",
-        "./client/components/Home.tsx"
+        "./client/components/views/Home.tsx"
     ]
 }

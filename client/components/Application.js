@@ -3,18 +3,17 @@
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
 import React from 'react';
-import Nav from './Nav';
-import Timestamp from './Timestamp';
+import {Link} from 'react-router';
 import ApplicationStore from '../stores/ApplicationStore';
 import {connectToStores, provideContext} from 'fluxible-addons-react';
 import {RouteHandler} from 'react-router';
 
 @provideContext
 class Application extends React.Component {
-
     static contextTypes = {
         getStore: React.PropTypes.func,
-        executeAction: React.PropTypes.func
+        executeAction: React.PropTypes.func,
+        router: React.PropTypes.func.isRequired
     };
 
     constructor(props, context) {
@@ -23,9 +22,11 @@ class Application extends React.Component {
     render() {
         return (
             <div>
-                <Nav />
+                <ul className="pure-menu pure-menu-open pure-menu-horizontal">
+                    <li className={this.context.router.isActive('/') ? 'pure-menu-selected' : ''}><Link to='/'>Home</Link></li>
+                    <li className={this.context.router.isActive('/about') ? 'pure-menu-selected' : ''}><Link to='/about'>About</Link></li>
+                </ul>
                 <RouteHandler />
-                <Timestamp />
             </div>
         );
     }

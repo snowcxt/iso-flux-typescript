@@ -5,10 +5,10 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var React = require("react");
 var TypedReact = require("typed-react");
-var myAction = require("../actions/myAction");
-var MyStore = require("../stores/MyStore");
+var myAction = require("../../actions/myAction");
+var MyStore = require("../../stores/MyStore");
 var fluxible_addons_react_1 = require('fluxible-addons-react');
-var helper = require("./helper");
+var helper = require("./../helper");
 var H = (function (_super) {
     __extends(H, _super);
     function H() {

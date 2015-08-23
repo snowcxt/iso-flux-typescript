@@ -1,13 +1,13 @@
 import React = require("react");
 import TypedReact = require("typed-react");
 
-import myAction = require("../actions/myAction");
-import MyStore = require("../stores/MyStore");
+import myAction = require("../../actions/myAction");
+import MyStore = require("../../stores/MyStore");
 
 import {connectToStores} from 'fluxible-addons-react';
 import {provideContext} from 'fluxible-addons-react';
 
-import helper = require("./helper");
+import helper = require("./../helper");
 
 
 class H extends TypedReact.Component<{
