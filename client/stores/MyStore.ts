@@ -1,45 +1,43 @@
 import addons = require('fluxible/addons');
 
 class MyStore extends addons.BaseStore {
-    static storeName = "MyStore";
-    static handlers = {
-        'MY_ACTION': "handleChange",
-        'LOAD_HOME': 'londServerData',
-    }
+  static storeName = "MyStore";
+  static handlers = {
+    'MY_ACTION': "handleChange",
+    'LOAD_HOME': 'londServerData',
+  }
 
-    public time: string;
-    public name: string;
-    public server: string;
-    initialize() {
-        this.time = new Date().toString();
-        this.name = "body";
-    }
+  public time: string;
+  public name: string;
+  public server: string;
+  initialize() {
+    this.time = new Date().toString();
+    this.name = "body";
+  }
 
-    handleChange(payload: string) {
-        this.name = payload;
-        this.time = new Date().toString();
-        this.emitChange();
-    }
-    londServerData(data) {
+  handleChange(payload: string) {
+    this.name = payload;
+    this.time = new Date().toString();
+    this.emitChange();
+  }
+  londServerData(data) {
+    this.server = data;
+    this.emitChange();
+  }
+  getState() {
+    return "Hello: " + this.name + " @ " + this.time;
+  }
+  getServer() {
+    return this.server;
+  }
 
-        this.server = data;
-        this.emitChange();
-    }
-    getState() {
-        return "Hello: " + this.name + " @ " + this.time;
-    }
-    getServer() {
-        return this.server;
-    }
+  dehydrate() {
+    return this.server;
+  }
 
-    dehydrate() {
-        return { server: this.server };
-    }
-
-    rehydrate(state) {
-        console.log("rehydrate", state);
-        this.server = state.server;
-    }
+  rehydrate(state) {
+    this.server = state;
+  }
 }
 
 export = MyStore

@@ -29,11 +29,10 @@ var MyStore = (function (_super) {
         return this.server;
     };
     MyStore.prototype.dehydrate = function () {
-        return { server: this.server };
+        return this.server;
     };
     MyStore.prototype.rehydrate = function (state) {
-        console.log("rehydrate", state);
-        this.server = state.server;
+        this.server = state;
     };
     MyStore.storeName = "MyStore";
     MyStore.handlers = {
